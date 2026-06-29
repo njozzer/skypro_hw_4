@@ -11,3 +11,4 @@ logger.txt
 .env
 logs/
 data/
+db.sqlite3
