@@ -16,6 +16,4 @@ class Command(BaseCommand):
             if created:
                 self.stdout.write(
                     self.style.SUCCESS(f'Successfully added category: {category.name}'))
-            else:
-                self.stdout.write(
-                    self.style.WARNING(f'Category already exists: {category.name}'))
+
