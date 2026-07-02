@@ -1,9 +1,13 @@
 from django.shortcuts import render
 
+from catalog.models import Product
+
 
 # Create your views here.
 def home_page(request):
-    return render(request, "home.html")
+    product_list = Product.objects.all()
+    context = {'product_list': product_list}
+    return render(request, "home.html", context)
 
 
 def contacts(request):
