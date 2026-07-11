@@ -1,1 +1,55 @@
-[{"model": "catalog.product", "pk": 5, "fields": {"name": "Продукт 1", "description": "Описание продукта 1", "picture": "", "category": 14, "price": 2345, "created_at": "2026-06-30T18:52:03.778Z", "updated_at": "2026-06-30T18:52:03.778Z"}}]
+[
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Смартфон Xiaomi Redmi 15C 8/256GB",
+      "description": "Описание Смартфона Xiaomi Redmi 15C 8/256GB",
+      "picture": "smartfon_xiaomi_redmi_15c_8_256gb_chernyy_1.jpg",
+      "category": 16,
+      "price": 2345,
+      "created_at": "2026-06-30T18:52:03.778Z",
+      "updated_at": "2026-06-30T18:52:03.778Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Смартфон Samsung Galaxy A17 6/128GB",
+      "description": "Описание Смартфона Samsung Galaxy A17 6/128GB",
+      "picture": "smartfon_samsung_galaxy_a17_6_128gb_chernyy_1.jpg",
+      "category": 16,
+      "price": 2345,
+      "created_at": "2026-06-30T18:52:03.778Z",
+      "updated_at": "2026-06-30T18:52:03.778Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Телевизор LG 32LQ63806LC.ARUG, Full HD, webOS Smart TV",
+      "description": "Описание Телевизора LG 32LQ63806LC.ARUG",
+      "picture": "televizor_lg_32lq63806lc.arug_belyy_3469070_1.jpg",
+      "category": 17,
+      "price": 2345,
+      "created_at": "2026-06-30T18:52:03.778Z",
+      "updated_at": "2026-06-30T18:52:03.778Z"
+    }
+  }
+  ,
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Телевизор Samsung QE43Q7FAAUXRU, QLED",
+      "description": "Описание Телевизора Samsung QE43Q7FAAUXRU, QLED",
+      "picture": "televizor_samsung_qe43q7faauxru_qled_chernyy_3524796_1.jpg",
+      "category": 17,
+      "price": 2345,
+      "created_at": "2026-06-30T18:52:03.778Z",
+      "updated_at": "2026-06-30T18:52:03.778Z"
+    }
+  }
+]
