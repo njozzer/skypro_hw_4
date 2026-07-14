@@ -8,3 +8,10 @@ class Articles(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
     is_publicated = models.BooleanField(verbose_name='признак публикац', default=False)
     view_counter = models.PositiveIntegerField(default=0, verbose_name='количество просмотров')
+
+    class Meta:
+        verbose_name = 'Статья'
+        verbose_name_plural = 'Статьи'
+
+    def __str__(self):
+        return self.title
