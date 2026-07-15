@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView, TemplateView
 from catalog.models import Product
 
@@ -13,6 +13,21 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = 'product_page.html'
     context_object_name = 'product'
+
+class ProductCreateView(CreateView):
+    model = Product
+    fields = []
+    template_name = 'product_page.html'
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    fields = []
+    context_object_name = 'product'
+    template_name = 'product_page.html'
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'product_page.html'
 
 class ContactView(TemplateView):
     template_name = 'contacts.html'
