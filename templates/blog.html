@@ -10,7 +10,8 @@
         <div class="card-body">
             <div class="row">
                 <h1 class="card-title pricing-card-title col-4">{{article.title}}</h1>
-                <div class="col-2 d-flex justify-content-center"> <i class="bi bi-eye"></i> {{article.view_counter}}</div>
+                <div class="col-2 d-flex justify-content-center"><i class="bi bi-eye"></i> {{article.view_counter}}
+                </div>
             </div>
 
             <div>
@@ -21,14 +22,15 @@
     </div>
 </div>
 {% empty %}
-<div class="col-7">
-    <div class="card mb-4 box-shadow">
+<div class="col-7 d-flex justify-content-center">
 
-        <div class="card-body">
-            <h1 class="card-title pricing-card-title col-4">Статей нету, добавьте свою</h1>
-            <a href="/blog/{{article.pk}}" class="btn btn-lg btn-block btn-outline-primary">Создать статью</a>
-        </div>
+
+    <div>
+        <h1 class="card-title pricing-card-title col-4">Статей нету, добавьте свою</h1>
+        <a href="/blog/new" class="btn btn-lg btn-block btn-outline-primary">Создать статью</a>
     </div>
+
+
 </div>
 {% endfor %}
 {% endblock %}

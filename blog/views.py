@@ -6,7 +6,7 @@ from .models import Articles
 class ArticlesCreateView(CreateView):
     model = Articles
     fields = ['title', 'content', 'picture', 'is_publicated']
-    template_name = 'articles_form.html'
+    template_name = 'blog_new.html'
     success_url = reverse_lazy('articles_list')
 
 class ArticlesListView(ListView):
