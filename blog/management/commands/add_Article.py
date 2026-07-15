@@ -38,10 +38,12 @@ Aliquam eleifend felis vel tempor vestibulum. Sed consectetur vulputate cursus.
 Phasellus non risus eu elit sodales porttitor. Vivamus tellus justo, dictum a pulvinar sit amet, lacinia eu risus. 
 Nunc vel lorem quis lorem varius facilisis. Ut a tortor ipsum.
 """
-        article1_data = {'title': 'Статья 1', 'content': content_text,
-                         'picture': 'article1_picture.jpg',
-                         'is_publicated': True}
-        article1, created = Articles.objects.get_or_create(**article1_data)
-        if created:
-            self.stdout.write(
-                self.style.SUCCESS(f'Successfully added product: {article1.title}'))
+        for i in range(0,5):
+
+            article1_data = {'title': f'Статья {i}', 'content': content_text,
+                             'picture': 'images.png',
+                             'is_publicated': True}
+            article1, created = Articles.objects.get_or_create(**article1_data)
+            if created:
+                self.stdout.write(
+                    self.style.SUCCESS(f'Successfully added product: {article1.title}'))
