@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView, TemplateView
 from django.urls import reverse_lazy
 from catalog.forms import ProductForm
 from catalog.models import Product
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 class ProductListView(ListView):
