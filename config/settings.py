@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "catalog.apps.CatalogConfig",
     "blog.apps.BlogConfig",
-    "auth.apps.AuthConfig",
+    "custom_auth.apps.CustomAuthConfig",
 ]
 
 MIDDLEWARE = [
@@ -125,8 +125,10 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
-AUTH_USER_MODEL = 'custom_auth.User'
+AUTH_USER_MODEL = 'custom_auth.CustomUser'
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mail.ru'
