@@ -12,9 +12,22 @@ class CustomLoginView(LoginView):
     form_class = CustomAuthenticationForm
     success_url = reverse_lazy('home')
 
+
 class CustomLogoutView(LogoutView):
+    template_name = 'logout_page.html'
+    form_class = CustomAuthenticationForm
+    http_method_names = ["get", "post", "options"]
+
+    def get(self, request, *args, **kwargs):
+        # Trigger the standard POST logic during a GET request
+        return self.post(request, *args, **kwargs)
+
     def get_next_page(self):
-        return reverse_lazy('home')
+        return reverse_lazy('goodbye')
+
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)
+
 
 class CustomRegisterView(CreateView):
     template_name = 'register_page.html'

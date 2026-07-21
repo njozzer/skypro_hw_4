@@ -6,7 +6,7 @@
 
         <div class="card-body">
             <h1 class="mb-4">Выйти из аккаунта</h1>
-            <form method="post">
+            <form  action="{% url 'logout' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit" class="btn btn-danger">Выйти</button>

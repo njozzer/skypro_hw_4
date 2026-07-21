@@ -4,28 +4,30 @@ from django.urls import reverse_lazy
 from catalog.forms import ProductForm
 from catalog.models import Product
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_not_required
 
 # Create your views here.
+@login_not_required
 class ProductListView(ListView):
     model = Product
     template_name = 'home.html'
     context_object_name = 'product_list'
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
     template_name = 'product_page.html'
     context_object_name = 'product'
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'product_new.html'
     success_url = reverse_lazy('home')
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     context_object_name = 'product'
@@ -35,7 +37,7 @@ class ProductUpdateView(UpdateView):
         return reverse_lazy('product', kwargs={'pk': self.object.pk})
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     template_name = 'product_confirm_delete.html'
     success_url = reverse_lazy('home')
