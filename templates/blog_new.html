@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Страница создание статьи {% endblock %}
+{% block content %}
+<div class="col-7">
+    <div class="card mb-4 box-shadow">
+        <div class="card-header">
+            <h1 class="mb-4">Форма Article</h1>
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+            <a href="{% url 'articles_list' %}" class="btn btn-secondary">Отмена</a>
+        </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
