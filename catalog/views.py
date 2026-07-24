@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_not_required
 
 # Create your views here.
-@login_not_required
+
 class ProductListView(ListView):
     model = Product
     template_name = 'home.html'
