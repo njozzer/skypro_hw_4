@@ -26,6 +26,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("catalog.urls")),
     path("blog/", include("blog.urls")),
+    path("auth/", include("custom_auth.urls")),
 ]
 
 
