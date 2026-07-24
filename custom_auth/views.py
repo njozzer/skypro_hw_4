@@ -18,9 +18,7 @@ class CustomLogoutView(LogoutView):
     form_class = CustomAuthenticationForm
     http_method_names = ["get", "post", "options"]
 
-    def get(self, request, *args, **kwargs):
-        # Trigger the standard POST logic during a GET request
-        return self.post(request, *args, **kwargs)
+
 
     def get_next_page(self):
         return reverse_lazy('goodbye')
