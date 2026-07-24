@@ -25,7 +25,7 @@ class Product(models.Model):
         verbose_name = 'продукт'
         verbose_name_plural = 'продукты'
         ordering = ['name', 'description']
-
+        permissions = [('',''),]
     def __str__(self):
         return self.name
 
