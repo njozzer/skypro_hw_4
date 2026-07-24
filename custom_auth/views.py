@@ -14,7 +14,6 @@ class CustomLoginView(LoginView):
 
 
 class CustomLogoutView(LogoutView):
-    template_name = 'logout_page.html'
     form_class = CustomAuthenticationForm
     http_method_names = ["get", "post", "options"]
 
