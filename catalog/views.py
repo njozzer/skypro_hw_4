@@ -1,10 +1,14 @@
+from django.core.exceptions import PermissionDenied
+from django.http import HttpResponseForbidden
+from django.shortcuts import redirect, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView, TemplateView
 from django.urls import reverse_lazy
 from catalog.forms import ProductForm
 from catalog.models import Product
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_not_required
+
 
 # Create your views here.
 @login_not_required
@@ -26,12 +30,22 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
     template_name = 'product_new.html'
     success_url = reverse_lazy('home')
 
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
+
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     context_object_name = 'product'
     template_name = 'product_update_form.html'
+
+    def post(self, request, *args, **kwargs):
+        product = get_object_or_404(Product, id=kwargs.get('pk', 1))
+        if product.owner != request.user and not request.user.groups.filter(name='Product moderator').exists():
+            return HttpResponseForbidden()
+        return super().post(request, *args, **kwargs)
 
     def get_success_url(self):
         return reverse_lazy('product', kwargs={'pk': self.object.pk})
