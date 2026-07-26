@@ -55,7 +55,12 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     template_name = 'product_confirm_delete.html'
     success_url = reverse_lazy('home')
-
+    def post(self, request, *args, **kwargs):
+        product = get_object_or_404(Product, id=kwargs.get('pk', 1))
+        if product.owner != request.user and not request.user.groups.filter(name='Product moderator').exists():
+            return HttpResponseForbidden()
+        product.delete()
+        return redirect('home')
 
 class ContactView(TemplateView):
     template_name = 'contacts.html'

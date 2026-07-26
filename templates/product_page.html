@@ -17,9 +17,12 @@
                 <li>Изменено - {{product.updated_at}}</li>
                 <li>Автор - {{product.owner}}</li>
             </ul>
+            {% if user == product.owner or perms.catalog.can_unpublish_product %}
             <a href="/product/{{product.pk}}/edit/" class="btn btn-lg btn-block btn-secondary">Изменить</a>
             <a href="/product/{{product.pk}}/delete/" class="btn btn-lg btn-block btn-danger">Удалить</a>
+            {% endif %}
         </div>
+
     </div>
 </div>
 

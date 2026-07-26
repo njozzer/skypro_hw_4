@@ -10,7 +10,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         product_moderator = Group.objects.create(name='Product Moderator')
-        can_unpublish_product = Permission.objects.get(codename='Product:can_unpublish_product')
-        can_delete_products = Permission.objects.get(codename='Product:can_delete_products')
+        can_unpublish_product = Permission.objects.get(codename='can_unpublish_product')
+        can_delete_products = Permission.objects.get(codename='delete_product')
         product_moderator.permissions.add(can_unpublish_product, can_delete_products)
 
