@@ -33,6 +33,10 @@ class ProductForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super().clean()
 
+    def get_initial(self):
+        initial = super().get_initial()
+        return initial
+
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)
 
