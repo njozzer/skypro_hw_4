@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_not_required
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
 from django.core.cache import cache
+from catalog.services import CatalogService
 
 
 # Create your views here.
@@ -22,7 +23,7 @@ class ProductListView(ListView):
     def get_queryset(self):
         queryset = cache.get('product_list_queryset')
         if not queryset:
-            queryset = super.get_queryset()
+            queryset = super().get_queryset()
             cache.set('product_list_queryset', queryset, 60 * 15)
         return queryset
 
@@ -78,23 +79,23 @@ class ContactView(TemplateView):
     template_name = 'contacts.html'
 
 
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'category_list.html'
+    context_object_name = 'category_list'
+
+
 class CategoryDetailView(LoginRequiredMixin, DetailView):
     model = Category
     template_name = 'category_detail.html'
     context_object_name = 'category'
 
-    def queryset(self, category_id):
-        categories = super.get_queryset()
-        for category in categories:
-            if category.id == category_id:
-                return category
-        return None
-
     def get_context_data(self, **kwargs):
+        # Получаем стандартный контекст данных из родительского класса
         context = super().get_context_data(**kwargs)
-        # context['products'] = get_category_product(self.kwargs['category_id'])
-        return context
 
+        context['product_list'] = CatalogService.get_products_by_category(self.kwargs['pk'])
+        return context
 
 # def home_page(request):
 #    product_list = Product.objects.all()
